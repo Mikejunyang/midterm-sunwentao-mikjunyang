@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     index: "./index.js",
     list: "./list.js",
-    // edit: "./edit.js",
+    edit: "./edit.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -17,7 +17,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", {
-          loader: "sass-loader",  
+          loader: "sass-loader",
           options: {
             sassOptions: {
               quietDeps: true,
@@ -46,16 +46,16 @@ module.exports = {
       chunks: ["index", "main"],
       filename: "index.html",
     }),
-     new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: "./list.html",
       chunks: ["list", "main"],
       filename: "list.html",
-     }),
-    // new HtmlWebpackPlugin({
-    //   template: "./edit.html",
-    //   chunks: ["edit", "main"],
-    //   filename: "edit.html",
-    // }),
+    }),
+    new HtmlWebpackPlugin({
+      template: "./edit.html",
+      chunks: ["edit", "main"],
+      filename: "edit.html",
+    }),
   ],
   devServer: {
     static: "./dist",
